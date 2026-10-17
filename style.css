@@ -1,0 +1,378 @@
+/* ===== Reset ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sage: #9CAF88;
+  --sage-dark: #7A8B6E;
+  --milk: #FBF8F3;
+  --milk-warm: #F3EDE4;
+  --choc: #4A3B32;
+  --choc-light: #6B5A4E;
+  --gold: #C9A961;
+  --line: #D9CDBF;
+
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Jost', -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--milk);
+  color: var(--choc);
+  line-height: 1.65;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: min(100% - 40px, 640px);
+  margin-inline: auto;
+}
+
+.section { padding: 64px 0; }
+
+/* ===== Типографика ===== */
+.section__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 6vw, 2.4rem);
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.section__subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  text-align: center;
+  color: var(--sage-dark);
+  margin-bottom: 32px;
+}
+
+.script-accent {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+  color: var(--sage-dark);
+  text-align: center;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: center;
+  color: var(--choc-light);
+  max-width: 520px;
+  margin-inline: auto;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--milk-warm);
+  transform: scale(1.04);
+  animation: heroZoom 18s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  to { transform: scale(1); }
+}
+
+.hero__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(74, 59, 50, 0.65) 0%,
+    rgba(74, 59, 50, 0.25) 45%,
+    rgba(74, 59, 50, 0.08) 100%
+  );
+}
+
+.hero__caption {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--milk);
+  padding: 0 24px 72px;
+  text-shadow: 0 2px 24px rgba(74, 59, 50, 0.35);
+}
+
+.hero__names {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.6rem, 11vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+
+.hero__date {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  font-weight: 400;
+  opacity: 0.92;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: 22px;
+  height: 36px;
+  border: 1px solid rgba(251, 248, 243, 0.6);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+}
+
+.hero__scroll span {
+  width: 2px;
+  height: 7px;
+  background: var(--milk);
+  border-radius: 1px;
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(9px); opacity: 0.3; }
+}
+
+/* ===== КРУЖЕВНОЙ РАЗДЕЛИТЕЛЬ ===== */
+.lace-divider {
+  background: var(--milk);
+  line-height: 0;
+  margin: -1px 0;
+}
+
+.lace-divider svg {
+  display: block;
+  width: 100%;
+  height: 70px;
+}
+
+/* ===== ПРИГЛАШЕНИЕ ===== */
+.invitation {
+  padding-top: 20px;
+  padding-bottom: 48px;
+}
+
+/* ===== КАЛЕНДАРЬ ===== */
+.calendar-section {
+  background: var(--milk-warm);
+  padding: 56px 0;
+}
+
+.calendar-card {
+  display: flex;
+  justify-content: center;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px 8px;
+  background: var(--milk);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 28px 24px 20px;
+  box-shadow: 0 8px 32px rgba(74, 59, 50, 0.06);
+  min-width: 260px;
+}
+
+.calendar__day {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: var(--choc-light);
+  padding-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.calendar__num {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 9vw, 2.6rem);
+  line-height: 1;
+  text-align: center;
+  position: relative;
+  padding: 10px 0 4px;
+  color: var(--choc);
+}
+
+.calendar__num--muted { color: var(--choc-light); opacity: 0.5; }
+
+.calendar__num--target {
+  color: var(--choc);
+  font-weight: 500;
+}
+
+/* Рукописный кружок */
+.hand-circle {
+  position: absolute;
+  inset: -8px -10px -4px;
+  pointer-events: none;
+}
+
+.hand-circle svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.calendar__month {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--choc-light);
+  padding-top: 6px;
+}
+
+.time {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 7vw, 2.4rem);
+  text-align: center;
+  margin-top: 28px;
+  letter-spacing: 0.08em;
+  color: var(--choc);
+}
+
+/* ===== ЛОКАЦИЯ / ОТКРЫТКА ===== */
+.location {
+  padding-bottom: 72px;
+}
+
+.postcard {
+  position: relative;
+  background: var(--milk);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 56px 24px 12px;
+  margin: 0 auto;
+  max-width: 380px;
+  box-shadow: 0 12px 40px rgba(74, 59, 50, 0.08);
+}
+
+/* Печать сверху */
+.postcard__seal {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  filter: drop-shadow(0 4px 10px rgba(74, 59, 50, 0.15));
+}
+
+.postcard__seal svg { width: 100%; height: 100%; display: block; }
+
+/* Рисунок */
+.postcard__drawing {
+  padding: 4px 0 0;
+}
+
+.hotel-sketch {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Рука снизу */
+.postcard__hand {
+  margin: 0 auto;
+  width: 160px;
+  margin-top: -6px;
+}
+
+.postcard__hand svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.location__address {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--choc-light);
+  margin-top: 28px;
+  letter-spacing: 0.08em;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--milk-warm);
+  padding: 72px 0 64px;
+  text-align: center;
+}
+
+.footer__script {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(2rem, 9vw, 2.8rem);
+  color: var(--sage-dark);
+  margin-bottom: 16px;
+}
+
+.footer__names {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.footer__date {
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  color: var(--choc-light);
+}
+
+/* ===== Reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+
+/* ===== Адаптив ===== */
+@media (min-width: 560px) {
+  .section { padding: 80px 0; }
+  .calendar { padding: 32px 32px 24px; gap: 4px 12px; }
+  .postcard { padding: 64px 32px 16px; }
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .hero__photo { animation: none; transform: none; }
+}
